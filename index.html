@@ -1,0 +1,42 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Chat App Test</title>
+    </head>
+    <body>
+        <h1>Chat Application</h1>
+        <form>
+            <input type="text" placeholder="insert message" autocomplete="off" id="message"/>
+            <input type="submit" value="Submit" id="submit-message"/>
+        </form>
+        
+        <section id="messages-container">
+            
+        </section>
+        
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
+            
+            socket.on('connect', function(data) {
+                var nickname = prompt('Choose a nickname');
+                socket.emit('join', nickname);
+            });
+            
+            socket.on('messages', function(data) {
+                $(`<p>${data}</p>`).appendTo('#messages-container');
+                console.log(data);
+            });
+            
+            $(document).ready(function() {
+                $('form').submit(function(e) {
+                    e.preventDefault();
+                    var message = $('#message').val();
+                    socket.emit('messages', message);
+                    $('message').val('');
+                });
+            });
+        </script>
+    </body>
+</html>
