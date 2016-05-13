@@ -8,11 +8,14 @@ io.on('connection', function(client) {
     
     client.on('join', function(name) {
         client.nickname = name;
+        client.broadcast.emit('chat', `${name} joined the chat`);
     });
     
     client.on('messages', function(data) {
         console.log(data);
+        
         var nickname = client.nickname;
+        
         client.broadcast.emit('messages', `${nickname}: ${data}`);
         client.emit('messages', `${nickname}: ${data}`);
     });

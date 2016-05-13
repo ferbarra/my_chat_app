@@ -24,6 +24,10 @@
                 socket.emit('join', nickname);
             });
             
+            socket.on('chat', function(newUser) {
+                $(`<p><strong>${newUser}</strong></p>`).appendTo('#messages-container');
+            });
+            
             socket.on('messages', function(data) {
                 $(`<p>${data}</p>`).appendTo('#messages-container');
                 console.log(data);
@@ -34,7 +38,7 @@
                     e.preventDefault();
                     var message = $('#message').val();
                     socket.emit('messages', message);
-                    $('message').val('');
+                    $('#message').val('');
                 });
             });
         </script>
