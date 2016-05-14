@@ -39,8 +39,11 @@
                 $('form').submit(function(e) {
                     e.preventDefault();
                     var message = $('#message').val();
-                    socket.emit('messages', message);
-                    $('#message').val('');
+                    
+                    if (typeof message === 'string' && message !== '') {
+                        socket.emit('messages', message);
+                        $('#message').val('');
+                    }
                 });
                 
                 $('#clear-screen').on('click', function() {
