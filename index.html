@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>Chat App Test</title>
+        
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        
     </head>
     <body>
         <h1>Chat Application</h1>
@@ -26,8 +29,16 @@
                 socket.emit('join', nickname);
             });
             
-            socket.on('chat', function(newUser) {
-                $(`<p><strong>${newUser}</strong></p>`).appendTo('#messages-container');
+            socket.on('display users', function(newUser) {
+                console.log(`New user: ${newUser}`);
+            });
+            
+            socket.on('remove user', function(user) {
+                //$(`#active-users li[data-name=${user}]`).remove();
+            });
+            
+            socket.on('chat', function(newUserMessage) {
+                $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages-container');
             });
             
             socket.on('messages', function(data) {
