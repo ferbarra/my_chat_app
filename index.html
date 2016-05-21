@@ -3,9 +3,10 @@
     <head>
         <title>Chat App Test</title>
         
-        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
         
     </head>
+    
     <body>
         <h1>Chat Application</h1>
         <form>
@@ -13,54 +14,12 @@
             <input type="submit" value="Send" id="submit-message"/>
         </form>
         
-        <section id="messages-container">
-            
-        </section>
+        <section id="messages-container"></section>
         
         <button id="clear-screen">Clear Screen</button>
         
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-            var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
-            
-            socket.on('connect', function(data) {
-                var nickname = prompt('Choose a nickname');
-                socket.emit('join', nickname);
-            });
-            
-            socket.on('display users', function(newUser) {
-                console.log(`New user: ${newUser}`);
-            });
-            
-            socket.on('remove user', function(user) {
-                //$(`#active-users li[data-name=${user}]`).remove();
-            });
-            
-            socket.on('chat', function(newUserMessage) {
-                $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages-container');
-            });
-            
-            socket.on('messages', function(data) {
-                $(`<p>${data}</p>`).appendTo('#messages-container');
-                console.log(data);
-            });
-            
-            $(document).ready(function() {
-                $('form').submit(function(e) {
-                    e.preventDefault();
-                    var message = $('#message').val();
-                    
-                    if (typeof message === 'string' && message !== '') {
-                        socket.emit('messages', message);
-                        $('#message').val('');
-                    }
-                });
-                
-                $('#clear-screen').on('click', function() {
-                    $('#messages-container').html('');
-                });
-            });
-        </script>
+        <script src="/static/js/socket.js"></script>
     </body>
 </html>
