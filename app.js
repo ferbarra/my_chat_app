@@ -10,7 +10,7 @@ const redisClient = redis.createClient();
 var storeMessage = function (name, data) {
     var message = JSON.stringify({name: name, data: data});
     
-    redisClient.rpush('messages', message, function(error, reply) {
+    redisClient.lpush('messages', message, function(error, reply) {
         redisClient.ltrim('messages', 0, 9);
     });
 };
@@ -18,6 +18,7 @@ var storeMessage = function (name, data) {
 io.on('connection', function(socket) {
     
     socket.on('join', function(name) {
+        
         socket.nickname = name;
         
         socket.broadcast.emit('display users', name);
@@ -33,6 +34,7 @@ io.on('connection', function(socket) {
         socket.broadcast.emit('chat', `${name} joined the chat`);
         
         redisClient.lrange("messages", 0, -1, function(error, messages) {
+            messages = messages.reverse();
             messages.forEach(function(message) {
                 message = JSON.parse(message);
                 socket.emit('messages', `${message.name}: ${message.data}`);
