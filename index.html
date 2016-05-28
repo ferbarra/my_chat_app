@@ -11,16 +11,29 @@
     
     <body>
         <header>
-          <h1>Chat Application</h1>
+            <h1>Chat Application</h1>
         </header>
-        <form>
-            <input type="text" placeholder="insert message" autocomplete="off" id="message"/>
-            <input type="submit" value="Send" id="submit-message"/>
-        </form>
         
-        <section id="messages-container"></section>
+        <div class="container">
+            
+            <section id="mobile-controllers">
+                <button type="button">Chat</button>
+                <button type="button">Users</button>
+            </section>
+                
+            <section id="messages-container"></section>
+            
+            <form id="messages-form">
+                <input type="text" placeholder="Type message" autocomplete="off" id="message"/>
+                <input type="submit" value="Send" id="submit-message"/>
+            </form>
         
-        <button id="clear-screen">Clear Screen</button>
+            
+        <!--
+            <button id="clear-screen">Clear Screen</button>
+        -->
+        
+        </div>
         
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
         <script src="/socket.io/socket.io.js"></script>

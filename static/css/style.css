@@ -7,3 +7,22 @@ header h1 {
     text-align: center;
     margin: 0;
 }
+.container {
+    padding: 20px;
+}
+#mobile-controllers {
+    text-align: center;
+}
+#messages-container {
+    height: 60vh;
+    margin: 20px 0px;
+    padding: 1rem;
+    background-color: #e6e6e6;
+    overflow: auto;
+}
+#messages-form {
+    text-align: center;
+}
+button {
+    margin: 0px;
+}
