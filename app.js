@@ -9,7 +9,6 @@ const redisClient = redis.createClient();
 
 var storeMessage = function (name, data) {
     var message = JSON.stringify({name: name, data: data});
-    
     redisClient.lpush('messages', message, function(error, reply) {
         redisClient.ltrim('messages', 0, 9);
     });
@@ -18,11 +17,8 @@ var storeMessage = function (name, data) {
 io.on('connection', function(socket) {
     
     socket.on('join', function(name) {
-        
         socket.nickname = name;
-        
         socket.broadcast.emit('display users', name);
-        
         redisClient.smembers('users', function(error, users) {
             users.forEach(function(user) {
                 socket.emit('display users', user);
@@ -56,7 +52,7 @@ io.on('connection', function(socket) {
     socket.on('disconnect', function(user) {
         var nickname = socket.nickname;
         console.log(user);
-        socket.broadcast.emit('user removed', socket.nickname)
+        socket.broadcast.emit('user removed', socket.nickname);
         socket.broadcast.emit('remove user', user);
         redisClient.srem('users', socket.nickname);
     });
@@ -64,13 +60,7 @@ io.on('connection', function(socket) {
     
 });
 
-app.use('/static', express.static(path.join(__dirname, '/static')));
-
-app.get('/', function(request, response) {
-    response.sendFile('/home/ubuntu/workspace/index.html');
-});
-
-
+app.use(express.static('public'));
 
 server.listen(process.env.PORT, function() {
     console.log('Server Ready');
