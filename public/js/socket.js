@@ -3,7 +3,7 @@ var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
 socket.on('connect', function(data) {
     var nickname = prompt('Choose a nickname');
     socket.emit('join', nickname);
-    });
+});
             
 socket.on('display users', function(newUser) {
     console.log(`New user: ${newUser}`);

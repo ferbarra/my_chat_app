@@ -7,18 +7,24 @@ header h1 {
     text-align: center;
     margin: 0;
 }
-.container {
-    padding: 20px;
+#chat-window {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
 }
 #mobile-controllers {
     text-align: center;
 }
 #messages-container {
     height: 60vh;
-    margin: 20px 0px;
-    padding: 1rem;
     background-color: #e6e6e6;
-    overflow: auto;
+    overflow-y: scroll;
+}
+#messages-container p {
+    width: 90%;
+    margin: 5%;
 }
 #messages-form {
     text-align: center;

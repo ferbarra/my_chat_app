@@ -1,0 +1,43 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Chat App Test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/skeleton.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    </head>
+    
+    <body>
+        <header>
+            <h1>Chat Application</h1>
+        </header>
+        
+        <div class="container" id="chat-window">
+            
+            <section id="mobile-controllers">
+                <button type="button">Chat</button>
+                <button type="button">Users</button>
+            </section>
+                
+            <section id="messages-container"></section>
+            
+            <form id="messages-form">
+                <input type="text" placeholder="Type message" autocomplete="off" id="message"/>
+                <input type="submit" value="Send" id="submit-message"/>
+            </form>
+        
+            
+        <!--
+            <button id="clear-screen">Clear Screen</button>
+        -->
+        
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="js/socket.js"></script>
+        <script type="text/javascript" src="js/client.js"></script>
+    </body>
+</html>
