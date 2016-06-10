@@ -4,8 +4,23 @@ const app = express();
 const server = require('http').createServer(app);
 const path = require('path');
 const io = require('socket.io')(server);
+
+
+//Setting up redis connection
 const redis = require('redis');
-const redisClient = redis.createClient();
+const TESTING_DB = 0;
+const DEVELOPMENT_DB = 1;
+const PRODUCTION_DB = 2;
+
+if (process.env.REDISTOGO_URL) {
+    var rtg = require("url").parse(process.env.REDISTOGO_URL);
+    var redisClient = redis.createClient(rtg.port, rtg.hostname);
+    redis.auth(rtg.auth.split(":")[1]);
+} else {
+    var redisClient = redis.createClient();
+    redisClient.select( process.env.NODE_ENV || DEVELOPMENT_DB);
+}
+
 
 var storeMessage = function (name, data) {
     var message = JSON.stringify({name: name, data: data});
@@ -52,9 +67,9 @@ io.on('connection', function(socket) {
     socket.on('disconnect', function(user) {
         var nickname = socket.nickname;
         console.log(user);
-        socket.broadcast.emit('user removed', socket.nickname);
+        socket.broadcast.emit('user removed', nickname);
         socket.broadcast.emit('remove user', user);
-        redisClient.srem('users', socket.nickname);
+        redisClient.srem('users', nickname);
     });
     
     
