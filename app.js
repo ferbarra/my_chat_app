@@ -1,9 +1,9 @@
 // Libraries & frameworks
-const express = require('express');
-const app = express();
-const server = require('http').createServer(app);
-const path = require('path');
-const io = require('socket.io')(server);
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var path = require('path');
+var io = require('socket.io')(server);
 
 
 //Setting up redis connection
@@ -77,7 +77,9 @@ io.on('connection', function(socket) {
 
 app.use(express.static('public'));
 
-server.listen(process.env.PORT, function() {
-    console.log('Server Ready');
+var port = process.env.PORT || 8080;
+
+server.listen(port, function() {
+    console.log(`Server Ready...listening on port: ${port}`);
 });
 

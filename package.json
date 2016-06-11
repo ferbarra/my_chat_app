@@ -4,12 +4,16 @@
   "description": "A chat application built with express.js and socket.io",
   "main": "app.js",
   "dependencies": {
-    "socket.io": "^1.4.6",
+    "express": "^4.13.4",
     "redis": "^2.6.0-2",
-    "express": "^4.13.4"
+    "socket.io": "^1.4.6"
+  },
+  "engines": {
+    "node": "4.4.3"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
