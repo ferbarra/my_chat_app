@@ -8,10 +8,7 @@ header h1 {
     margin: 0;
 }
 #chat-window {
-    margin: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    
     height: 80vh;
 }
 #mobile-controllers {
@@ -23,7 +20,7 @@ header h1 {
     overflow-y: scroll;
 }
 #messages-container p {
-    width: 90%;
+    width: 100%;
     margin: 5%;
 }
 #messages-form {
