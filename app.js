@@ -29,8 +29,7 @@ var storeMessage = function (name, data) {
     });
 };
 
-io.set('transports', ['xhr-polling']);
-io.set('polling duration', 10);
+
 
 io.on('connection', function(socket) {
     
