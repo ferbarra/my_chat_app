@@ -1,4 +1,4 @@
-var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
+var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/', {transports:['websocket']});
             
 socket.on('connect', function(data) {
     var nickname = prompt('Choose a nickname');
