@@ -1,4 +1,8 @@
-var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
+//In production (heroku) the connection has to be made to:
+//https://freecodecamp-edmonton-chatroom.herokuapp.com/
+//not to: https://my-chat-app-ferbarra2207.c9users.io/
+
+var socket = io.connect('https://freecodecamp-edmonton-chatroom.herokuapp.com/');
             
 socket.on('connect', function(data) {
     var nickname = prompt('Choose a nickname');
