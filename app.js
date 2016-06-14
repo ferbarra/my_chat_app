@@ -3,10 +3,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var path = require('path');
-var io = require('socket.io')(server, {
-  
-  path: '/socket.io'
-});
+var io = require('socket.io')(server);
 
 
 //Setting up redis connection
