@@ -17,11 +17,17 @@
         <div class="container" id="chat-window">
             
             <section id="mobile-controllers">
-                <button type="button">Chat</button>
-                <button type="button">Users</button>
+                <button type="button" id="chat-button">Chat</button>
+                <button type="button" id="users-button">Users</button>
             </section>
                 
-            <section id="messages-container"></section>
+            <section id="messages-container">
+                <!-- Messages are appended here -->
+            </section>
+            
+            <section id="actives-users-container">
+                <!-- Active users are appended here -->
+            </section>
             
             <form id="messages-form">
                 <input type="text" placeholder="Type message" autocomplete="off" id="message"/>
@@ -29,9 +35,6 @@
             </form>
         
             
-        <!--
-            <button id="clear-screen">Clear Screen</button>
-        -->
         
         </div>
         

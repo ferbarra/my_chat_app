@@ -8,7 +8,6 @@ header h1 {
     margin: 0;
 }
 #chat-window {
-    
     height: 80vh;
 }
 #mobile-controllers {
@@ -21,7 +20,7 @@ header h1 {
 }
 #messages-container p {
     width: 100%;
-    margin: 5%;
+    margin: 1%;
 }
 #messages-form {
     text-align: center;

@@ -1,10 +1,10 @@
 /*In production (heroku) the connection has to be made to:
  ** https://freecodecamp-edmonton-chatroom.herokuapp.com/
  ** not to: https://my-chat-app-ferbarra2207.c9users.io/ if you are using cloud 9.
- ** If running locally on your machiner set it to http://localhost:"whatever port being use"
+ ** If running locally on your machine set it to http://localhost:"whatever port being use"
 */
 
-var socket = io.connect('https://freecodecamp-edmonton-chatroom.herokuapp.com/');
+var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
             
 socket.on('connect', function(data) {
     var nickname = prompt('Choose a nickname');
@@ -30,7 +30,6 @@ socket.on('chat', function(newUserMessage) {
             
 socket.on('messages', function(data) {
     $(`<p>${data}</p>`).appendTo('#messages-container');
-    console.log(data);
 });
             
 $(document).ready(function() {
@@ -43,8 +42,5 @@ $(document).ready(function() {
             $('#message').val('');
         }
     });
-                
-    $('#clear-screen').on('click', function() {
-        $('#messages-container').html('');
-    });
+            
 });

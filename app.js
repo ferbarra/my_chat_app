@@ -8,9 +8,6 @@ var io = require('socket.io')(server);
 
 //Setting up redis connection
 const redis = require('redis');
-const TESTING_DB = 0;
-const DEVELOPMENT_DB = 1;
-const PRODUCTION_DB = 2;
 
 if (process.env.REDISTOGO_URL) {
     var rtg = require("url").parse(process.env.REDISTOGO_URL);
@@ -34,6 +31,7 @@ io.on('connection', function(socket) {
     
     socket.on('join', function(name) {
         socket.nickname = name;
+        redisClient.sadd('users', name);
         socket.broadcast.emit('display users', name);
         redisClient.smembers('users', function(error, users) {
             users.forEach(function(user) {
@@ -41,7 +39,7 @@ io.on('connection', function(socket) {
             });
         });
         
-        redisClient.sadd('users', name);
+        
         
         socket.broadcast.emit('chat', `${name} joined the chat`);
         
@@ -49,7 +47,7 @@ io.on('connection', function(socket) {
             messages = messages.reverse();
             messages.forEach(function(message) {
                 message = JSON.parse(message);
-                socket.emit('messages', `${message.name}: ${message.data}`);
+                socket.emit('messages', `<strong>${message.name}</strong>: ${message.data}`);
             });
         });
         
