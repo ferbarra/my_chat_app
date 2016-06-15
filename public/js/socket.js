@@ -1,6 +1,8 @@
-//In production (heroku) the connection has to be made to:
-//https://freecodecamp-edmonton-chatroom.herokuapp.com/
-//not to: https://my-chat-app-ferbarra2207.c9users.io/
+/*In production (heroku) the connection has to be made to:
+ ** https://freecodecamp-edmonton-chatroom.herokuapp.com/
+ ** not to: https://my-chat-app-ferbarra2207.c9users.io/ if you are using cloud 9.
+ ** If running locally on your machiner set it to http://localhost:"whatever port being use"
+*/
 
 var socket = io.connect('https://freecodecamp-edmonton-chatroom.herokuapp.com/');
             

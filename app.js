@@ -18,7 +18,6 @@ if (process.env.REDISTOGO_URL) {
     redisClient.auth(rtg.auth.split(":")[1]);
 } else {
     var redisClient = redis.createClient();
-    redisClient.select( process.env.NODE_ENV || DEVELOPMENT_DB);
 }
 
 
