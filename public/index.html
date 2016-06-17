@@ -16,6 +16,10 @@
         
         <div class="container" id="chat-window">
             
+            <!--Mobile controllers will only be visible in mobile screen.
+                In bigger screens the active users will be shown to the left
+                of messages container
+            -->
             <section id="mobile-controllers">
                 <button type="button" id="chat-button">Chat</button>
                 <button type="button" id="users-button">Users</button>
@@ -29,6 +33,7 @@
                 <!-- Active users are appended here -->
             </section>
             
+            <!--Messages are written here and sent with the sent button-->
             <form id="messages-form">
                 <input type="text" placeholder="Type message" autocomplete="off" id="message"/>
                 <input type="submit" value="Send" id="submit-message"/>
