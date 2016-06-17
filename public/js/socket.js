@@ -13,6 +13,7 @@ socket.on('connect', function(data) {
             
 socket.on('display users', function(newUser) {
     console.log(`New user: ${newUser}`);
+    $(`<li> ${newUser} </li>`).appendTo('#users-window ul');
 });
             
 socket.on('remove user', function(user) {
