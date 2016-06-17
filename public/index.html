@@ -14,7 +14,7 @@
             <h1>Chat Application</h1>
         </header>
         
-        <div class="container" id="chat-window">
+        <div class="container" id="chat">
             
             <!--Mobile controllers will only be visible in mobile screen.
                 In bigger screens the active users will be shown to the left
@@ -24,20 +24,25 @@
                 <button type="button" id="chat-button">Chat</button>
                 <button type="button" id="users-button">Users</button>
             </section>
-                
-            <section id="messages-container">
-                <!-- Messages are appended here -->
+             
+            <section id="chat-window">   
+                <div id="messages-container">
+                    <!-- Messages are appended here -->
+                </div>
+               <form id="messages-form">
+                    <input type="text" placeholder="Type message" autocomplete="off" id="message"/>
+                    <input type="submit" value="Send" id="submit-message"/>
+                </form>
             </section>
             
-            <section id="actives-users-container">
+            <section id="users-window" style="display: none">
+                <ul>
                 <!-- Active users are appended here -->
+                </ul>
             </section>
             
             <!--Messages are written here and sent with the sent button-->
-            <form id="messages-form">
-                <input type="text" placeholder="Type message" autocomplete="off" id="message"/>
-                <input type="submit" value="Send" id="submit-message"/>
-            </form>
+            
         
             
         
