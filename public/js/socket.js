@@ -18,10 +18,11 @@ socket.on('display users', function(newUser) {
             
 socket.on('remove user', function(user) {
                 
-    //$(`#active-users li[data-name=${user}]`).remove();
+    
 });
             
 socket.on('user removed', function(user) {
+    //$(`#active-users li[data-name=${user}]`).remove();
     $(`<p><strong>${user} has left the chat.</strong></p>`).appendTo('#messages-conntainer');
 });
             
