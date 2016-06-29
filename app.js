@@ -66,6 +66,7 @@ io.on('connection', function(socket) {
     socket.on('disconnect', function(user) {
         var nickname = socket.nickname;
         console.log(user);
+        console.log(nickname);
         socket.broadcast.emit('user removed', nickname);
         socket.broadcast.emit('remove user', user);
         redisClient.srem('users', nickname);
