@@ -3,13 +3,15 @@ $(document).ready(function() {
     
     $('#users-button').on('click', function() {
         $('#chat-window').hide(0, function() {
-            $('#users-window').show();
+            $('#messages-form').hide(0);
+            $('#users-window').show(0);
         });
     });
     
     $('#chat-button').on('click', function() {
         $('#users-window').hide(0, function() {
-            $('#chat-window').show();
+            $('#chat-window').show(0);
+            $('#messages-form').show(0);
         });
     });
     
