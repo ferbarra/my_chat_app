@@ -4,9 +4,11 @@
         <title>Chat App Test</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="css/skeleton.css" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Custom css -->
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        
     </head>
     
     <body>
@@ -14,28 +16,29 @@
             <h1>Chat Application</h1>
         </header>
         
-        <div class="container" id="chat">
+        <div class="container-fluid" id="chat">
             
             <!--Mobile controllers will only be visible in mobile screen.
                 In bigger screens the active users will be shown to the left
                 of messages container
             -->
-            <section id="mobile-controllers">
-                <button type="button" id="chat-button">Chat</button>
-                <button type="button" id="users-button">Users</button>
+            <section id="mobile-controllers" class="row">
+                <button type="button" class="btn btn-default col-xs-6" id="chat-button">Chat</button>
+                <button type="button" class="btn btn-default col-xs-6" id="users-button">Users</button>
             </section>
              
-            <section id="chat-window">   
-                <div id="messages-container">
+            <section id="chat-window" class="row">   
+                <div id="messages-container" class="col-xs-12">
                     <!-- Messages are appended here -->
                 </div>
-               <form id="messages-form">
-                    <input type="text" placeholder="Type message" autocomplete="off" id="message"/>
-                    <input type="submit" value="Send" id="submit-message"/>
-                </form>
             </section>
             
-            <section id="users-window" style="display: none">
+            <form id="messages-form" class="row">
+                <input type="text" class="col-xs-9" placeholder="Type message" autocomplete="off" id="message"/>
+                <input type="submit" class="col-xs-3" value="Send" id="submit-message"/>
+            </form>
+            
+            <section id="users-window" style="display: none" class="col-xs-12">
                 <ul>
                 <!-- Active users are appended here -->
                 </ul>
@@ -49,6 +52,8 @@
         </div>
         
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/socket.js"></script>
         <script type="text/javascript" src="js/client.js"></script>
