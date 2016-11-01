@@ -18,7 +18,7 @@ if (process.env.REDISTOGO_URL) {
 }
 
 
-var storeMessage = function (name, data) {
+function storeMessage (name, data) {
     var message = JSON.stringify({name: name, data: data});
     redisClient.lpush('messages', message, function(error, reply) {
         redisClient.ltrim('messages', 0, 9);
@@ -39,8 +39,6 @@ io.on('connection', function(socket) {
             });
         });
         
-        
-        
         socket.broadcast.emit('chat', `${name} joined the chat`);
         
         redisClient.lrange("messages", 0, -1, function(error, messages) {
@@ -58,8 +56,8 @@ io.on('connection', function(socket) {
         
         var nickname = socket.nickname;
         
-        socket.broadcast.emit('messages', `${nickname}: ${data}`);
-        socket.emit('messages', `${nickname}: ${data}`);
+        socket.broadcast.emit('messages', `<strong>${nickname}</strong>: ${data}`);
+        socket.emit('messages', `<strong>${nickname}</strong>: ${data}`);
         storeMessage(nickname, data);
     });
     

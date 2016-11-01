@@ -4,8 +4,8 @@
  ** If running locally on your machine set it to http://localhost:"whatever port being use"
 */
 
-//var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
-var socket = io.connect('https://freecodecamp-edmonton-chatroom.herokuapp.com/');
+var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
+//var socket = io.connect('https://freecodecamp-edmonton-chatroom.herokuapp.com/');
             
 socket.on('connect', function(data) {
     var nickname = prompt('Choose a nickname');
@@ -18,7 +18,7 @@ socket.on('display users', function(newUser) {
 });
             
 socket.on('remove user', function(user) {
-                
+    //remove the users name from the users window
     
 });
             
