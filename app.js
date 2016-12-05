@@ -29,10 +29,14 @@ function storeMessage (name, data) {
 
 io.on('connection', function(socket) {
     
+    // Activates when someone joins
     socket.on('join', function(name) {
         socket.nickname = name;
+        // Adds the name to the list of users
         redisClient.sadd('users', name);
+        // The name is displayed in the active user list of all active users.
         socket.broadcast.emit('display users', name);
+        // Gets all of the active user names and displays it on the user screen.
         redisClient.smembers('users', function(error, users) {
             users.forEach(function(user) {
                 socket.emit('display users', user);
