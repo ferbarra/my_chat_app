@@ -24,8 +24,7 @@
     "chat",
     "node.js",
     "express.js",
-    "socket.io",
-    "freecodecamp"
+    "socket.io"
   ],
   "author": "Fernando Barra",
   "license": "MIT",

@@ -53,9 +53,7 @@ io.on('connection', function(socket) {
     
     socket.on('messages', function(data) {
         console.log(data);
-        
         var nickname = socket.nickname;
-        
         socket.broadcast.emit('messages', `<strong>${nickname}</strong>: ${data}`);
         socket.emit('messages', `<strong>${nickname}</strong>: ${data}`);
         storeMessage(nickname, data);

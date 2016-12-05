@@ -19,8 +19,9 @@ header h1 {
     overflow-y: scroll;
 }
 #messages-container p {
-    width: 100%;
+    display: block;
     margin: 1%;
+    word-wrap: break-word;
 }
 #messages-form {
     text-align: center;
