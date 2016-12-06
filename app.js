@@ -35,7 +35,7 @@ io.on('connection', function(socket) {
         // Adds the name to the list of users
         redisClient.sadd('users', name);
         // The name is displayed in the active user list of all active users.
-        socket.broadcast.emit('display users', name);
+        socket.broadcast.emit('update users list', name);
         // Gets all of the active user names and displays it on the user screen.
         redisClient.smembers('users', function(error, users) {
             users.forEach(function(user) {
@@ -43,7 +43,7 @@ io.on('connection', function(socket) {
             });
         });
         
-        socket.broadcast.emit('chat', `${name} joined the chat`);
+        socket.broadcast.emit('user joined', `${name} joined the chat`);
         
         redisClient.lrange("messages", 0, -1, function(error, messages) {
             messages = messages.reverse();
@@ -67,6 +67,7 @@ io.on('connection', function(socket) {
         var nickname = socket.nickname;
         console.log(user);
         console.log(nickname);
+        socket.emit('notify disconnection', nickname);
         socket.broadcast.emit('user removed', nickname);
         socket.broadcast.emit('remove user', user);
         redisClient.srem('users', nickname);

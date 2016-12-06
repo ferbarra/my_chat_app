@@ -12,9 +12,8 @@ socket.on('connect', function(data) {
     socket.emit('join', nickname);
 });
             
-socket.on('display users', function(newUser) {
-    console.log(`New user: ${newUser}`);
-    $(`<li> ${newUser} </li>`).appendTo('#users-window ul');
+socket.on('update users list', function(newUser) {
+    $(`<li>${newUser}</li>`).appendTo('#users-window ul');
 });
             
 socket.on('remove user', function(user) {
@@ -27,12 +26,16 @@ socket.on('user removed', function(user) {
     $(`<p><strong>${user} has left the chat.</strong></p>`).appendTo('#messages-conntainer');
 });
             
-socket.on('chat', function(newUserMessage) {
+socket.on('user joined', function(newUserMessage) {
     $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages-container');
 });
             
 socket.on('messages', function(data) {
     $(`<p>${data}</p>`).appendTo('#messages-container');
+});
+
+socket.on('notify disconnection', function(data) {
+    alert('You have been disconnected');
 });
             
 $(document).ready(function() {
