@@ -39,7 +39,7 @@ io.on('connection', function(socket) {
         // Gets all of the active user names and displays it on the user screen.
         redisClient.smembers('users', function(error, users) {
             users.forEach(function(user) {
-                socket.emit('display users', user);
+                socket.emit('update users list', user);
             });
         });
         
