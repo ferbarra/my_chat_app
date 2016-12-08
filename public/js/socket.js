@@ -13,7 +13,7 @@ socket.on('connect', function(data) {
 });
             
 socket.on('update users list', function(newUser) {
-    $(`<li>${newUser}</li>`).appendTo('#users-window ul');
+    $(`<li>${newUser}</li>`).appendTo('#users > ul');
 });
             
 socket.on('remove user', function(user) {
@@ -23,15 +23,15 @@ socket.on('remove user', function(user) {
             
 socket.on('user removed', function(user) {
     //$(`#active-users li[data-name=${user}]`).remove();
-    $(`<p><strong>${user} has left the chat.</strong></p>`).appendTo('#messages-conntainer');
+    $(`<p><strong>${user} has left the chat.</strong></p>`).appendTo('#messages');
 });
             
 socket.on('user joined', function(newUserMessage) {
-    $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages-container');
+    $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages');
 });
             
 socket.on('messages', function(data) {
-    $(`<p>${data}</p>`).appendTo('#messages-container');
+    $(`<p>${data}</p>`).appendTo('#messages');
 });
 
 socket.on('notify disconnection', function(data) {

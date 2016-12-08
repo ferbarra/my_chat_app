@@ -11,20 +11,24 @@ header h1 {
     height: 80vh;
 }
 #mobile-controllers {
-    
+    display: none;
 }
-#messages-container {
+#messages {
     height: 80vh;
     background-color: #e6e6e6;
     overflow-y: scroll;
 }
-#messages-container p {
+#messages p {
     display: block;
     margin: 1%;
     word-wrap: break-word;
 }
 #messages-form {
+    display: block;
     text-align: center;
+}
+#users {
+    padding: 1rem;
 }
 button {
     margin: 0px;
