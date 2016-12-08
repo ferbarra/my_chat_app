@@ -1,20 +1,24 @@
+body {
+    height: 100vh;
+}
 header {
     background-color: grey;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    height: 10%;
 }
 header h1 {
     text-align: center;
     margin: 0;
 }
 #chat {
-    height: 80vh;
+    height: 90%;
 }
 #mobile-controllers {
     display: none;
 }
 #messages {
-    height: 80vh;
+    height: 100%;
     background-color: #e6e6e6;
     overflow-y: scroll;
 }
@@ -25,9 +29,16 @@ header h1 {
 }
 #messages-form {
     display: block;
-    text-align: center;
+}
+#messages-form input[type="text"] {
+    width: 85%;
+}
+#messages-form input[type="submit"] {
+    width: 14%;
+    margin: 0;
 }
 #users {
+    height: 100%;
     padding: 1rem;
 }
 button {

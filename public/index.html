@@ -18,34 +18,36 @@
             <h1>Chatroom</h1>
         </header>
         
-        <div id="chat">
+        <div id="chat" class="row">
             
             <!--Mobile controllers will only be visible in mobile screen.
                 In bigger screens the active users will be shown to the left
                 of messages container
             -->
+            <!--
             <section id="mobile-controllers" class="row">
                 <button type="button" class="btn btn-default col-xs-6" id="chat-button">Chat</button>
                 <button type="button" class="btn btn-default col-xs-6" id="users-button">Users</button>
             </section>
+            -->
              
-            <section id="chat-window" class="row">
-                <div id="users" class="three columns">
+            <!--<section id="chat-window" class="row">-->
+                <div id="users" class="two columns">
                     <ul>
                         <!-- User names are appended here -->
                     </ul>
                 </div>
-                <div id="messages" class="nine columns">
+                <div id="messages" class="ten columns">
                     <!-- Messages are appended here -->
-                    <form id="messages-form" class="row">
-                        <input type="text" class="col-xs-9" placeholder="Type message" 
+                    <form id="messages-form" class="u-full-width">
+                        <input type="text" placeholder="Type message" 
                          autocomplete="off" id="message"/>
-                        <input type="submit" class="col-xs-3" value="Send" id="submit-message"/>
+                        <input type="submit" value="Send" id="submit-message"/>
                     </form>
                 </div>
-            </section>
+            <!--</section>-->
             
-            <!--Messages are written here and sent with the sent button-->
+           
             
         </div>
         
