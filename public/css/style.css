@@ -19,6 +19,7 @@ header h1 {
 }
 #messages {
     height: 100%;
+    position: relative;
     background-color: #e6e6e6;
     overflow-y: scroll;
 }
@@ -29,9 +30,13 @@ header h1 {
 }
 #messages-form {
     display: block;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
 }
 #messages-form input[type="text"] {
     width: 85%;
+    margin-bottom: 0;
 }
 #messages-form input[type="submit"] {
     width: 14%;
