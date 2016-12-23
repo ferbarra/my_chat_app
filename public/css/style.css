@@ -1,31 +1,45 @@
+html {
+    overflow-y: hidden;
+}
 body {
     height: 100vh;
 }
 header {
-    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff5d3e;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     height: 10%;
+    margin-bottom: 0;
 }
 header h1 {
     text-align: center;
     margin: 0;
+    color: #2E0219;
 }
 #chat {
     height: 90%;
+    margin: 0;
 }
 #mobile-controllers {
     display: none;
 }
 #messages {
-    height: 100%;
+    display: inline-block;
+    width: 80%;
+    height: 98%;
+    margin: 0;
     position: relative;
-    background-color: #e6e6e6;
+    box-sizing: border-box;
+    background-color: white;
     overflow-y: scroll;
+    
 }
 #messages p {
     display: block;
-    margin: 1%;
+    margin: 0.7rem;
     word-wrap: break-word;
 }
 #messages-form {
@@ -36,15 +50,24 @@ header h1 {
 }
 #messages-form input[type="text"] {
     width: 85%;
-    margin-bottom: 0;
+    margin: 0;
 }
 #messages-form input[type="submit"] {
     width: 14%;
     margin: 0;
 }
 #users {
-    height: 100%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    width:19.7%;
+    height: 98%;
+    margin: 0;
     padding: 1rem;
+    overflow-y: scroll;
+}
+#users h3 {
+    font-size: 2rem;
 }
 button {
     margin: 0px;
