@@ -30,27 +30,23 @@
                 <button type="button" class="btn btn-default col-xs-6" id="users-button">Users</button>
             </section>
             -->
-             
-            <!--<section id="chat-window" class="row">-->
                 <div id="users">
                     <h3>Active Users</h3>
                     <ul>
                         <!-- User names are appended here -->
                     </ul>
-                </div>
-                <div id="messages">
-                    <!-- Messages are appended here -->
+                </div><!-- end of #users -->
+                <div id="chat-window">
+                    <div id="messages">
+                        <!-- Messages are appended here -->
+                    </div>
                     <form id="messages-form" class="u-full-width">
                         <input type="text" placeholder="Type message" 
                          autocomplete="off" id="message"/>
                         <input type="submit" value="Send" id="submit-message"/>
                     </form>
-                </div>
-            <!--</section>-->
-            
-           
-            
-        </div>
+                </div><!-- end of #chat-window -->
+        </div><!-- end of chat -->
         
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
         <script src="/socket.io/socket.io.js"></script>
