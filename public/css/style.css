@@ -32,12 +32,21 @@ header h1 {
     width:19.7%;
     height: 100%;
     margin: 0;
-    padding: 1rem;
     overflow-y: scroll;
     float: left;
 }
 #users h3 {
     font-size: 2rem;
+    text-align: center;
+    background-color: #33C3F0;
+    border-color: #33C3F0;
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: white;
+}
+#users ul {
+    padding: 1rem;
 }
 #chat-window {
     display: inline-block;
@@ -78,13 +87,14 @@ header h1 {
     display: block;
     height: 5%;
     margin-bottom: 0;
+    padding: 0;
 }
 #messages-form input[type="text"] {
     width: 85%;
     margin: 0;
 }
 #messages-form input[type="submit"] {
-    width: 14.2%;
+    width: 14.4%;
     margin: 0;
 }
 button {
