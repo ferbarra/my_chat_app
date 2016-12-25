@@ -13,13 +13,13 @@ socket.on('connect', function(data) {
 });
             
 socket.on('update users list', function(newUser) {
-    $(`<li>${newUser}</li>`).appendTo('#users > ul');
+    $(`<li data-name="${newUser}">${newUser}</li>`).appendTo('#users > ul');
 });
             
 socket.on('remove user', function(user) {
-    //remove the users name from the users window
-    console.log("Someone disconnected");
-    //$(`#active-users li[data-name=${user}]`).remove();
+    //remove the users name from the #users.
+    $(`#users > ul > li[data-name=${user}]`).remove();
+    // "user has left" message appended in #messages.
     $(`<p><strong>${user} has left the chat.</strong></p>`).appendTo('#messages');
 });
             
