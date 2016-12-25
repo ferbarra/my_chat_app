@@ -19,9 +19,6 @@ socket.on('update users list', function(newUser) {
 socket.on('remove user', function(user) {
     //remove the users name from the users window
     console.log("Someone disconnected");
-});
-            
-socket.on('user removed', function(user) {
     //$(`#active-users li[data-name=${user}]`).remove();
     $(`<p><strong>${user} has left the chat.</strong></p>`).appendTo('#messages');
 });
