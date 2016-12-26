@@ -9,6 +9,7 @@ var io = require('socket.io')(server);
 //Setting up redis connection
 const redis = require('redis');
 
+// How to connect to redis when hosted on heroku.
 if (process.env.REDISTOGO_URL) {
     var rtg = require("url").parse(process.env.REDISTOGO_URL);
     var redisClient = redis.createClient(rtg.port, rtg.hostname);
@@ -35,11 +36,11 @@ io.on('connection', function(socket) {
         // Adds the name to the list of users
         redisClient.sadd('users', name);
         // The name is displayed in the active user list of all active users.
-        socket.broadcast.emit('update users list', name);
+        socket.broadcast.emit('new user', name);
         // Gets all of the active user names and displays it on the user screen.
         redisClient.smembers('users', function(error, users) {
             users.forEach(function(user) {
-                socket.emit('update users list', user);
+                socket.emit('new user', user);
             });
         });
         
@@ -56,7 +57,6 @@ io.on('connection', function(socket) {
     });
     
     socket.on('messages', function(data) {
-        console.log(data);
         var nickname = socket.nickname;
         socket.broadcast.emit('messages', `<strong>${nickname}</strong>: ${data}`);
         socket.emit('messages', `<strong>${nickname}</strong>: ${data}`);
@@ -65,10 +65,7 @@ io.on('connection', function(socket) {
     
     socket.on('disconnect', function(user) {
         var nickname = socket.nickname;
-        console.log(user);
-        console.log(nickname);
         socket.emit('notify disconnection', nickname);
-        //socket.broadcast.emit('user removed', nickname);
         socket.broadcast.emit('remove user', nickname);
         redisClient.srem('users', nickname);
     });

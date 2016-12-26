@@ -12,8 +12,8 @@ socket.on('connect', function(data) {
     socket.emit('join', nickname);
 });
             
-socket.on('update users list', function(newUser) {
-    $(`<li data-name="${newUser}">${newUser}</li>`).appendTo('#users > ul');
+socket.on('new user', function(user) {
+    $(`<li data-name="${user}">${user}</li>`).appendTo('#users > ul');
 });
             
 socket.on('remove user', function(user) {
