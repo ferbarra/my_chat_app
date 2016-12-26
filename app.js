@@ -33,33 +33,46 @@ io.on('connection', function(socket) {
     // Activates when someone joins
     socket.on('join', function(name) {
         socket.nickname = name;
-        // Adds the name to the list of users
+        // Adds the name to the redis list 'users'.
         redisClient.sadd('users', name);
         // The name is displayed in the active user list of all active users.
-        socket.broadcast.emit('new user', name);
+        socket.broadcast.emit('update active users list', name);
         // Gets all of the active user names and displays it on the user screen.
         redisClient.smembers('users', function(error, users) {
             users.forEach(function(user) {
-                socket.emit('new user', user);
+                socket.emit('update active users list', user);
             });
         });
         
-        socket.broadcast.emit('user joined', `${name} joined the chat`);
+        //Saves the "user joined message" into the messages redisdb
+        storeMessage('', `${name} joined the chat.`);
         
+        // Sends all previously stored messages to the client to be displayed.
         redisClient.lrange("messages", 0, -1, function(error, messages) {
             messages = messages.reverse();
             messages.forEach(function(message) {
                 message = JSON.parse(message);
-                socket.emit('messages', `<strong>${message.name}</strong>: ${message.data}`);
+                // if there name attribute is empty then it's not a user
+                // message a "user joined" or "user" left message
+                if (message.name === '') {
+                    socket.emit('messages', `<strong>${message.data}</strong>`);
+                } else {
+                    socket.emit('messages', `<strong>${message.name}</strong>: ${message.data}`);
+                }
             });
         });
+        
+        // Displays the new user joined message in every users' screen.
+        socket.broadcast.emit('user joined', `${name} joined the chat.`);
         
     });
     
     socket.on('messages', function(data) {
         var nickname = socket.nickname;
-        socket.broadcast.emit('messages', `<strong>${nickname}</strong>: ${data}`);
-        socket.emit('messages', `<strong>${nickname}</strong>: ${data}`);
+        var message = `<strong>${nickname}</strong>: ${data}`;
+        console.log(message)
+        socket.broadcast.emit('messages', message);
+        socket.emit('messages', message);
         storeMessage(nickname, data);
     });
     

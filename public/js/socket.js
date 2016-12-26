@@ -4,31 +4,37 @@
  ** If running locally on your machine set it to http://localhost:"whatever port being use"
 */
 
+/* global $ */
+
 var socket = io.connect('https://my-chat-app-ferbarra2207.c9users.io/');
 //var socket = io.connect('https://uselesschat.herokuapp.com/');
             
 socket.on('connect', function(data) {
     var nickname = prompt('Choose a nickname');
-    socket.emit('join', nickname);
+    // check that the nickname isn't empty.
+    if (nickname !== '') {
+        socket.emit('join', nickname);
+    }
 });
             
-socket.on('new user', function(user) {
+socket.on('update active users list', function(user) {
     $(`<li data-name="${user}">${user}</li>`).appendTo('#users > ul');
 });
-            
+   
+socket.on('user joined', function(newUserMessage) {
+    $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages');
+});
+         
 socket.on('remove user', function(user) {
     //remove the users name from the #users.
     $(`#users > ul > li[data-name=${user}]`).remove();
     // "user has left" message appended in #messages.
-    $(`<p><strong>${user} has left the chat.</strong></p>`).appendTo('#messages');
+    $(`<p><strong>${user} has left the chat.</strong></p>`)
+        .appendTo('#messages');
 });
             
-socket.on('user joined', function(newUserMessage) {
-    $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages');
-});
-            
-socket.on('messages', function(data) {
-    $(`<p>${data}</p>`).appendTo('#messages');
+socket.on('messages', function(message) {
+    $(`<p>${message}</p>`).appendTo('#messages');
 });
 
 socket.on('notify disconnection', function(data) {
