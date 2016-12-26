@@ -78,9 +78,11 @@ io.on('connection', function(socket) {
     
     socket.on('disconnect', function(user) {
         var nickname = socket.nickname;
+        var userLeftMessage = `${nickname} has left the chat.`;
         socket.emit('notify disconnection', nickname);
-        socket.broadcast.emit('remove user', nickname);
+        socket.broadcast.emit('remove user', nickname, userLeftMessage);
         redisClient.srem('users', nickname);
+        storeMessage('', userLeftMessage);
     });
     
     

@@ -25,12 +25,11 @@ socket.on('user joined', function(newUserMessage) {
     $(`<p><strong>${newUserMessage}</strong></p>`).appendTo('#messages');
 });
          
-socket.on('remove user', function(user) {
+socket.on('remove user', function(user, message) {
     //remove the users name from the #users.
     $(`#users > ul > li[data-name=${user}]`).remove();
     // "user has left" message appended in #messages.
-    $(`<p><strong>${user} has left the chat.</strong></p>`)
-        .appendTo('#messages');
+    $(`<p><strong>${message}</strong></p>`).appendTo('#messages');
 });
             
 socket.on('messages', function(message) {
