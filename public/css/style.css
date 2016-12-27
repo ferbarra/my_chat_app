@@ -35,6 +35,22 @@ header h1 {
     overflow-y: scroll;
     float: left;
 }
+@media (max-width: 960px) {
+    #users {
+        width: 24.7%;
+    }
+}
+@media (max-width: 880px) {
+    #users {
+        width: 29.7%;
+    }
+}
+@media (max-width: 566px) {
+    #users {
+        display: none;
+        width: 100%;
+    }   
+}
 #users h3 {
     font-size: 2rem;
     text-align: center;
@@ -58,6 +74,21 @@ header h1 {
     padding: 0;
     float: right;
     
+}
+@media (max-width: 960px) {
+    #chat-window {
+        width: 75%;
+    }
+}
+@media (max-width: 880px) {
+    #chat-window {
+        width: 70%;
+    }
+}
+@media (max-width: 566px) {
+    #chat-window {
+        width: 100%;
+    }
 }
 #messages {
     display: block;
@@ -93,9 +124,39 @@ header h1 {
     width: 85%;
     margin: 0;
 }
+@media (max-width: 960px) {
+    #messages-form input[type="text"] {
+        width: 80%;
+    }
+}
+@media (max-width: 880px) {
+    #messages-form input[type="text"] {
+        width: 70%;
+    }
+}
+@media (max-width: 395px) {
+    #messages-form input[type="text"] {
+        width: 65%;
+    }
+}
 #messages-form input[type="submit"] {
     width: 14.4%;
     margin: 0;
+}
+@media (max-width: 960px) {
+    #messages-form input[type="submit"] {
+        width: 19.4%;
+    }
+}
+@media (max-width: 880px) {
+    #messages-form input[type="submit"] {
+        width: 29%;
+    }
+}
+@media (max-width: 395px) {
+    #messages-form input[type="submit"] {
+        width: 33%;
+    }
 }
 button {
     margin: 0px;
