@@ -25,6 +25,13 @@ header h1 {
 }
 #mobile-controllers {
     display: none;
+    margin: 0;
+    padding: 0;
+}
+@media (max-width: 566px) {
+    #mobile-controllers {
+        display: block
+    }
 }
 #users {
     display: inline-block;
